@@ -1,0 +1,1 @@
+# dapr-kafka-jdbc-sink-connect
