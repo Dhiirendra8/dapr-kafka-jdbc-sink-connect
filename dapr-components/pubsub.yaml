@@ -1,0 +1,14 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: orderpubsub-kafka
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+    - name: brokers # Required. Kafka broker connection setting
+      value: "localhost:9092"
+    - name: authType # Required.
+      value: "none"
+    - name: schemaRegistryURL
+      value: http://localhost:8081  # Your schema registry URL

@@ -1,0 +1,26 @@
+{
+  "name": "sink-postgres-dapr",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "errors.tolerance": "all",
+    "topics": "employees-avro",
+    "errors.deadletterqueue.topic.name": "",
+    "errors.deadletterqueue.topic.replication.factor": "1",
+    "connection.url": "jdbc:postgresql://postgres:5432/postgres",
+    "connection.user": "postgres",
+    "connection.password": "postgres",
+    "dialect.name": "PostgreSqlDatabaseDialect",
+    "insert.mode": "upsert",
+    "pk.mode": "kafka",
+    "fields.whitelist": "",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "schema.registry.url": "http://schema-registry:8081",
+    "value.converter.schema.registry.url": "http://schema-registry:8081",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "true",
+    "key.converter.schema.registry.url": "http://schema-registry:8081"
+  }
+}

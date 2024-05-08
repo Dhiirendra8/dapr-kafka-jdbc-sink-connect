@@ -1,0 +1,175 @@
+{
+  "info": {
+    "_postman_id": "739b8ac5-63fe-4fb6-b97d-cb2b8170f65b",
+    "name": "Dapr",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18152229"
+  },
+  "item": [
+    {
+      "name": "order-local",
+      "item": [
+        {
+          "name": "test",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8080/ping",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "ping"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "order-publishers",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"topic\" : \"orders\",\r\n    \"pubsubName\" : \"orderpubsub-kafka\",\r\n    \"order\": {\r\n        \"id\": 1113,\r\n        \"name\" : \"order-json\",\r\n        \"price\": 223\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/orders/publish",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "orders",
+                "publish"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "employee-local",
+      "item": [
+        {
+          "name": "employee-publisher",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"topic\" : \"employees-avro\",\r\n    \"pubsubName\" : \"orderpubsub-kafka\",\r\n    \"employee\": {\r\n        \"id\": 203,\r\n        \"firstName\" : \"Dhirendra\",\r\n        \"lastName\" : \"Singh\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8080/employees/publish",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "employees",
+                "publish"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:3500/v1.0/state/statestore",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "uuid": "f678929d-5ab2-47ed-a8c6-bebf4f407015"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"key\": \"name\",\r\n        \"value\": \"Bruce Wayne\"\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3500/v1.0/state/statestore",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3500",
+          "path": [
+            "v1.0",
+            "state",
+            "statestore"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3500/v1.0/state/statestore/name ",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3500",
+          "path": [
+            "v1.0",
+            "state",
+            "statestore",
+            "name "
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request Copy",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3500/v1.0/state/statestore/name ",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3500",
+          "path": [
+            "v1.0",
+            "state",
+            "statestore",
+            "name "
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

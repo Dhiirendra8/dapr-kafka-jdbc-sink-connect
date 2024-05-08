@@ -1,0 +1,3 @@
+mvn clean install
+dapr init
+dapr run --app-id dapr-publisher --resources-path ./dapr-components -- java -jar target/dapr-kafka-publisher-0.0.1-SNAPSHOT.jar
