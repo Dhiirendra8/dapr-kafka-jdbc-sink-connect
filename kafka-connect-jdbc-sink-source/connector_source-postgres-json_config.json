@@ -1,0 +1,25 @@
+{
+  "name": "source-postgres-json",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "tasks.max": "3",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "errors.log.enable": "false",
+    "connection.url": "jdbc:postgresql://postgres:5432/postgres",
+    "connection.user": "postgres",
+    "connection.password": "postgres",
+    "table.whitelist": "orders",
+    "numeric.mapping": "best_fit_eager_double",
+    "dialect.name": "PostgreSqlDatabaseDialect",
+    "mode": "incrementing",
+    "incrementing.column.name": "id",
+    "query": "",
+    "transaction.isolation.mode": "READ_COMMITTED",
+    "query.retry.attempts": "1",
+    "table.types": "TABLE",
+    "topic.prefix": "postgresql_",
+    "timestamp.granularity": "connect_logical",
+    "output.data.format": "JSON"
+  }
+}
